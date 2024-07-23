@@ -14,7 +14,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-yellow-50 w-1/3 text-center">Nama File</th>
-                                    <th class="text-yellow-50 text-center">Tanggal Upload</th>
+                                    <th class="text-yellow-50 text-center">Tanggal</th>
+                                    <th class="text-yellow-50 text-center">Jam</th>
                                     <th class="text-yellow-50 text-center">Service</th>
                                     <th class="text-yellow-50 text-center">Notes</th>
                                     <th class="text-yellow-50 text-center">Action</th>
@@ -22,9 +23,12 @@
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order)
-                                    <tr>
+                                    <tr class="hover">
                                         <td>{{ $order->original_filename }}</td>
-                                        <td>{{ $order->created_at->format('d-m-Y H:i:s') }}</td>
+                                        <td>{{ $order->created_at->setTimezone('Asia/Jakarta')->format('d-m-Y') }}
+                                        <td>{{ $order->created_at->setTimezone('Asia/Jakarta')->format('H:i T') }}
+                                        </td>
+
                                         <td>
                                             @if ($order->service->perapihan_paragraf)
                                                 Perapihan Paragraf<br>
@@ -47,7 +51,7 @@
                                         </td>
                                         <td>{{ $order->note }}</td>
                                         <td>
-                                            <a href="{{ Storage::url($order->filename) }}" class="btn btn-primary"
+                                            <a href="{{ Storage::url($order->filename) }}" class="btn btn-ghost"
                                                 download>Download</a>
                                         </td>
                                     </tr>
