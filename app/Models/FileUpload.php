@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class FileUpload extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['filename', 'original_filename', 'note'];
+
+    public function service()
+    {
+        return $this->hasOne(Service::class);
+    }
 }

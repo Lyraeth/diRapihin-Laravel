@@ -22,14 +22,32 @@
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order)
-                                    <tr class="hover">
+                                    <tr>
                                         <td>{{ $order->original_filename }}</td>
-                                        <td class="text-center">{{ $order->created_at->format('d-m-Y H:i:s') }}</td>
-                                        <td class="text-center">{{ ucfirst(str_replace('_', ' ', $order->service)) }}
-                                        <td class="text-center">{{ ucfirst(str_replace('_', ' ', $order->note)) }}
+                                        <td>{{ $order->created_at->format('d-m-Y H:i:s') }}</td>
+                                        <td>
+                                            @if ($order->service->perapihan_paragraf)
+                                                Perapihan Paragraf<br>
+                                            @endif
+                                            @if ($order->service->nomor_halaman)
+                                                Nomor Halaman<br>
+                                            @endif
+                                            @if ($order->service->daftar_isi)
+                                                Daftar Isi<br>
+                                            @endif
+                                            @if ($order->service->daftar_tabel)
+                                                Daftar Tabel<br>
+                                            @endif
+                                            @if ($order->service->daftar_gambar)
+                                                Daftar Gambar<br>
+                                            @endif
+                                            @if ($order->service->lainnya)
+                                                Lainnya: {{ $order->service->lainnya }}<br>
+                                            @endif
                                         </td>
-                                        <td class="text-center">
-                                            <a href="{{ Storage::url($order->filename) }}" class="btn btn-ghost"
+                                        <td>{{ $order->note }}</td>
+                                        <td>
+                                            <a href="{{ Storage::url($order->filename) }}" class="btn btn-primary"
                                                 download>Download</a>
                                         </td>
                                     </tr>

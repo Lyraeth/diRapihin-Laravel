@@ -20,15 +20,34 @@
                         <input type="file" id="file" name="file" required
                             class="my-2 file-input file-input-bordered w-full max-w-md" />
                         <div class="divider"></div>
-                        <label for="service" class="my-2">Choose service:</label>
-                        <select id="service" name="service" class="select select-ghost w-full max-w-xs my-2">
-                            <option disabled selected>Pilih Service yang kamu inginkan</option>
-                            <option value="perapihan_paragraf">Perapihan Paragraf</option>
-                            <option value="no_halaman">Nomor Halaman</option>
-                            <option value="daftar_isi">Daftar Isi</option>
-                            <option value="daftar_tabel">Daftar Tabel</option>
-                            <option value="daftar_gambar">Daftar Gambar</option>
-                        </select>
+                        <label class="my-2">Choose services:</label>
+                        <div class="my-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services[]" value="perapihan_paragraf"
+                                    class="checkbox checkbox-primary" />
+                                <span class="ml-2">Perapihan Paragraf</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services[]" value="nomor_halaman"
+                                    class="checkbox checkbox-primary" />
+                                <span class="ml-2">Nomor Halaman</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services[]" value="daftar_isi"
+                                    class="checkbox checkbox-primary" />
+                                <span class="ml-2">Daftar Isi</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services[]" value="daftar_tabel"
+                                    class="checkbox checkbox-primary" />
+                                <span class="ml-2">Daftar Tabel</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="services[]" value="daftar_gambar"
+                                    class="checkbox checkbox-primary" />
+                                <span class="ml-2">Daftar Gambar</span>
+                            </label>
+                        </div>
                         <div class="divider"></div>
                         <label for="note" class="my-2">Ada tambahan?</label>
                         <textarea id="note" name="note" class="textarea textarea-bordered my-2" placeholder="Catatan untuk admin:"></textarea>

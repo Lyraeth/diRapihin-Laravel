@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->string('filename');
             $table->string('original_filename');
-            $table->string('service');
             $table->string('note')->nullable();
             $table->timestamps();
         });

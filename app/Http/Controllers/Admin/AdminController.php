@@ -10,10 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // Ambil semua orderan dari database
-        $orders = FileUpload::all();
-
-        // Return view dengan data orderan
+        $orders = FileUpload::with('service')->get();
         return view('admin.orders', compact('orders'));
     }
 }
