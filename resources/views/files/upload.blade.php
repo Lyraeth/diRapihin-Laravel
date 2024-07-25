@@ -10,7 +10,6 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @if (session('success'))
-                        <div>{{ session('success') }}</div>
                     @endif
 
                     <form class="flex flex-col" action="{{ route('upload.handle') }}" method="POST"
@@ -22,27 +21,27 @@
                         <div class="divider"></div>
                         <label class="my-2">Choose services:</label>
                         <div class="my-2">
-                            <label class="flex items-center">
+                            <label class="flex items-center my-2">
                                 <input type="checkbox" name="services[]" value="perapihan_paragraf"
                                     class="checkbox checkbox-primary" />
                                 <span class="ml-2">Perapihan Paragraf</span>
                             </label>
-                            <label class="flex items-center">
+                            <label class="flex items-center my-2">
                                 <input type="checkbox" name="services[]" value="nomor_halaman"
                                     class="checkbox checkbox-primary" />
                                 <span class="ml-2">Nomor Halaman</span>
                             </label>
-                            <label class="flex items-center">
+                            <label class="flex items-center my-2">
                                 <input type="checkbox" name="services[]" value="daftar_isi"
                                     class="checkbox checkbox-primary" />
                                 <span class="ml-2">Daftar Isi</span>
                             </label>
-                            <label class="flex items-center">
+                            <label class="flex items-center my-2">
                                 <input type="checkbox" name="services[]" value="daftar_tabel"
                                     class="checkbox checkbox-primary" />
                                 <span class="ml-2">Daftar Tabel</span>
                             </label>
-                            <label class="flex items-center">
+                            <label class="flex items-center my-2">
                                 <input type="checkbox" name="services[]" value="daftar_gambar"
                                     class="checkbox checkbox-primary" />
                                 <span class="ml-2">Daftar Gambar</span>
@@ -60,4 +59,26 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (session('success'))
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "{{ session('success') }}",
+                });
+            @endif
+        });
+    </script>
 </x-app-layout>
