@@ -12,8 +12,14 @@ return new class extends Migration {
     {
         Schema::create('file_uploads', function (Blueprint $table) {
             $table->id();
+            $table->string('invoice_id');
             $table->string('filename');
             $table->string('original_filename');
+            $table->unsignedBigInteger('file_size');
+            $table->string('filename_pedoman');
+            $table->string('original_filename_pedoman');
+            $table->unsignedBigInteger('file_size_pedoman');
+            $table->string('status');
             $table->string('note')->nullable();
             $table->timestamps();
         });

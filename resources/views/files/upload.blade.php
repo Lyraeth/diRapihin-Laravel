@@ -15,9 +15,19 @@
                     <form class="flex flex-col" action="{{ route('upload.handle') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        <label for="file" class="my-2">Choose file:</label>
-                        <input type="file" id="file" name="file" required
-                            class="my-2 file-input file-input-bordered w-full max-w-md" />
+                        <div class="flex flex-row">
+                            <div class="col">
+                                <label for="file" class="my-2">Choose file:</label>
+                                <input type="file" id="file" name="file" required
+                                    class="my-2 file-input file-input-bordered w-full max-w-md" />
+                            </div>
+                            <div class="divider divider-horizontal"></div>
+                            <div class="col">
+                                <label for="file" class="my-2">Choose file pedoman:</label>
+                                <input type="file" id="file_pedoman" name="file_pedoman" required
+                                    class="my-2 file-input file-input-bordered w-full max-w-md" />
+                            </div>
+                        </div>
                         <div class="divider"></div>
                         <label class="my-2">Choose services:</label>
                         <div class="my-2">
