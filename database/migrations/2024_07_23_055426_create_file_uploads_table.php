@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->string('filename');
             $table->string('original_filename');
             $table->unsignedBigInteger('file_size');
-            $table->string('filename_pedoman');
-            $table->string('original_filename_pedoman');
-            $table->unsignedBigInteger('file_size_pedoman');
+            $table->string('filename_pedoman')->nullable();
+            $table->string('original_filename_pedoman')->nullable();
+            $table->unsignedBigInteger('file_size_pedoman')->nullable();
             $table->string('status');
             $table->string('note')->nullable();
             $table->timestamps();
