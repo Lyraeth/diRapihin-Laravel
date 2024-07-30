@@ -15,9 +15,39 @@
                     <form class="flex flex-col" action="{{ route('upload.handle') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        <label for="file" class="my-2">Choose file:</label>
-                        <input type="file" id="file" name="file" required
-                            class="my-2 file-input file-input-bordered w-full max-w-md" />
+                        <div class="flex">
+                            <div class="flex-1 w-1/2">
+                                <div class="form-control w-full max-w-lg">
+                                    <div class="label">
+                                        <span for="file" class="label-text my-2 text-xl font-semibold">Choose
+                                            file:</span>
+                                        <span class="label-text-alt text-red-400">Required</span>
+                                    </div>
+                                    <input type="file" id="file" name="file" required
+                                        class="file-input file-input-bordered w-full max-w-lg" />
+                                    <div class="label">
+                                        <span for="file" class="label-text-alt"></span>
+                                        <span for="file" class="label-text-alt">.doc or .docx</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divider divider-horizontal"></div>
+                            <div class="flex-2 w-1/2">
+                                <div class="form-control w-full max-w-lg">
+                                    <div class="label">
+                                        <span for="file" class="label-text my-2 text-xl font-semibold">Choose
+                                            file Pedoman:</span>
+                                        <span class="label-text-alt text-blue-400">Optional</span>
+                                    </div>
+                                    <input type="file" id="file_pedoman" name="file_pedoman"
+                                        class="my-2 file-input file-input-bordered w-full max-w-lg" />
+                                    <div class="label">
+                                        <span for="file" class="label-text-alt"></span>
+                                        <span for="file" class="label-text-alt">.doc or .docx or .pdf</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="divider"></div>
                         <label class="my-2">Choose services:</label>
                         <div class="my-2">
@@ -49,7 +79,7 @@
                         </div>
                         <div class="divider"></div>
                         <label for="note" class="my-2">Ada tambahan?</label>
-                        <textarea id="note" name="note" class="textarea textarea-bordered my-2" placeholder="Catatan untuk admin:"></textarea>
+                        <textarea id="note" name="note" class="textarea textarea-bordered my-2" placeholder="Catatan untuk admin"></textarea>
 
                         <div class="text-center">
                             <x-primary-button class="my-2">Upload</x-primary-button>

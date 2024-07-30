@@ -13,4 +13,12 @@ class AdminController extends Controller
         $orders = FileUpload::with('service')->get();
         return view('admin.orders', compact('orders'));
     }
+
+    public function detailOrder($id)
+    {
+        $orders = FileUpload::with('service')->find($id);
+        $detailOrders = FileUpload::where('id', $id)->get();
+
+        return view('admin.detailOrder', compact('orders', 'detailOrders'));
+    }
 }

@@ -18,17 +18,36 @@ class FileUploadController extends Controller
     {
         $request->validate([
             'file' => 'required|file|mimes:doc,docx',
+            'file_pedoman' => 'nullable|file|mimes:doc,docx,pdf',
             'services' => 'required|array',
             'note' => 'nullable|string',
         ]);
 
         $file = $request->file('file');
         $path = $file->store('public/uploads');
+        $size = $file->getSize();
+
+        $path_pedoman = null;
+        $size_pedoman = null;
+        $original_filename_pedoman = null;
+        $defaultNote = "Tidak ada tambahan atau note";
+
+        if ($request->hasFile('file_pedoman')) {
+            $file_pedoman = $request->file('file_pedoman');
+            $path_pedoman = $file_pedoman->store('public/uploadsPedoman');
+            $size_pedoman = $file_pedoman->getSize();
+            $original_filename_pedoman = $file_pedoman->getClientOriginalName();
+        }
 
         $fileUpload = new FileUpload();
         $fileUpload->filename = $path;
         $fileUpload->original_filename = $file->getClientOriginalName();
-        $fileUpload->note = $request->note;
+        $fileUpload->file_size = $size;
+        $fileUpload->filename_pedoman = $path_pedoman;
+        $fileUpload->original_filename_pedoman = $original_filename_pedoman;
+        $fileUpload->file_size_pedoman = $size_pedoman;
+        $fileUpload->status = 'pending';
+        $fileUpload->note = $request->note ?? $defaultNote;
         $fileUpload->save();
 
         $services = new Service();
