@@ -30,6 +30,7 @@ class FileUploadController extends Controller
         $path_pedoman = null;
         $size_pedoman = null;
         $original_filename_pedoman = null;
+        $defaultNote = "Tidak ada tambahan atau note";
 
         if ($request->hasFile('file_pedoman')) {
             $file_pedoman = $request->file('file_pedoman');
@@ -46,7 +47,7 @@ class FileUploadController extends Controller
         $fileUpload->original_filename_pedoman = $original_filename_pedoman;
         $fileUpload->file_size_pedoman = $size_pedoman;
         $fileUpload->status = 'pending';
-        $fileUpload->note = $request->note;
+        $fileUpload->note = $request->note ?? $defaultNote;
         $fileUpload->save();
 
         $services = new Service();
